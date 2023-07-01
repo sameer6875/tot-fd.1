@@ -1,0 +1,119 @@
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 class="fw-bold">Website Content</h2>
+            <ol>
+              <li><a href="index.html">Home</a></li>
+              <li>Website Content</li>
+            </ol>
+          </div>
+        </div>
+     </section><!-- End Breadcrumbs -->
+     <div class="container">
+     <div class="col-lg-6 mt-5 mt-lg-5">
+    {{message}}
+    <form [formGroup]="websiteContent" (ngSubmit)="save()" *ngIf="status==false">
+        <div class="form-group">     
+            <label for="webAppName">WebApp Name : </label>
+            <input type="text"  formControlName="webAppName" id="webAppName" autofocus class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="webAppName?.touched && webAppName?.invalid" class="alert alert-danger">Enter webApp Name </div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="homePageWelcome">Home Page Welcome : </label>
+            <input type="text" formControlName="homePageWelcome" id="homePageWelcome" class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="homePageWelcome?.touched && homePageWelcome?.invalid" class="alert alert-danger">Enter Home Page Welcome</div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="homePageCaption">Home Page Caption : </label>
+            <input type="text" formControlName="homePageCaption" id="homePageCaption" class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="homePageCaption?.touched && homePageCaption?.invalid" class="alert alert-danger">Enter Home Page Caption</div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="aboutUsCaption">About Us Caption : </label>
+            <input type="text" formControlName="aboutUsCaption" id="aboutUsCaption" class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="aboutUsCaption?.touched && aboutUsCaption?.invalid" class="alert alert-danger">Enter About Us Caption</div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="aboutUsHeader">About Us Header : </label>
+            <input type="text" formControlName="aboutUsHeader" id="aboutUsHeader" class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="aboutUsHeader?.touched && aboutUsHeader?.invalid" class="alert alert-danger">Enter About Us Header </div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="aboutUsFooter">About Us Footer : </label>
+            <input type="text" formControlName="aboutUsFooter" id="aboutUsFooter" class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="aboutUsFooter?.touched && aboutUsFooter?.invalid" class="alert alert-danger">Enter About Us Footer </div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="aboutUsPoints">About Us Points : </label>
+            <div formArrayName="aboutUsPoints" *ngFor="let aboutUsPoint of aboutUsPoints.controls;index as i">
+                <div [formGroupName]="i">
+                    Point: <input type="text" formControlName="pont" class="form-control border border-dark border-2 opacity-75"/>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary mt-1" (click)="addaboutUsPoint($event)">
+                &#10011;  Add One More About Us Point
+            </button>
+
+            <!-- <button >
+                Add One More About Us Point
+            </button> -->
+            <div *ngIf="aboutUsPoints?.touched && aboutUsPoints?.invalid" class="alert alert-danger">Enter About Us Points </div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="ourServicesCaption">Our Services Caption : </label>
+            <input type="text" formControlName="ourServicesCaption" id="ourServicesCaption" class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="ourServicesCaption?.touched && ourServicesCaption?.invalid" class="alert alert-danger">Enter Our Services Caption </div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="allOurServices">Our Services : </label>
+            <div formArrayName="allOurServices" *ngFor="let allOurService of allOurServices.controls;index as i" class=" border border-primary border-2 opacity-75 p-2 rounded mt-1">
+                <div [formGroupName]="i">
+                   <p> Service Title: <input type="text" formControlName="serviceTitle" class="form-control border border-dark border-2 opacity-75"/></p>
+                    Service Description: <input type="text" formControlName="serviceDesc" class="form-control border border-dark border-2 opacity-75"/>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary mt-1" (click)="addService($event)">
+                &#10011;  Add One More Service
+            </button>
+            <!-- <button (click)="addService($event)">
+                Add One More Service
+            </button> -->
+            <div *ngIf="allOurServices?.touched && allOurServices?.invalid" class="alert alert-danger">Enter Our Services </div>
+        </div>
+
+        <div class="form-group mt-lg-3">         
+            <label for="ourProductsCaption">Our Products Caption : </label>
+            <input type="text" formControlName="ourProductsCaption" id="ourProductsCaption" class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="ourProductsCaption?.touched && ourProductsCaption?.invalid" class="alert alert-danger">Enter Our Products Caption </div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="allourProducts">Our Products : </label>
+            <div formArrayName="allourProducts" *ngFor="let allourProduct of allourProducts.controls;index as i" class="border border-primary border-2 opacity-75 p-2 rounded mt-1">
+                <div [formGroupName]="i">
+                   <p> Product Title: <input type="text" formControlName="productTitle" class=" form-control border border-dark border-2 opacity-75"/></p>
+                    Product Description: <input type="text" formControlName="productDesc" class="form-control border border-dark border-2 opacity-75"/>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary mt-1" (click)="addProduct($event)">
+                &#10011;  Add One More Product
+            </button>
+            <!-- <button (click)="addProduct($event)">
+                Add One More Product
+            </button> -->
+            <div *ngIf="allourProducts?.touched && allourProducts?.invalid" class="alert alert-danger">Enter Our Prodcuts </div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="footerMessage">Footer Message: </label>
+            <input type="text" formControlName="footerMessage" id="footerMessage" class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="footerMessage?.touched && footerMessage?.invalid" class="alert alert-danger">Enter Footer Message</div>
+        </div>
+        <div class="form-group mt-3">
+            <input type="submit" id="sumbit" class="btn btn-primary mb-3">
+        </div>
+    </form>
+     </div>
+    </div>
+</main>
+

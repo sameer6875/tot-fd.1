@@ -1,0 +1,57 @@
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 class="fw-bold">Leads</h2>
+            <ol>
+              <li><a href="index.html">Home</a></li>
+              <li>Leads</li>
+            </ol>
+          </div>
+        </div>
+     </section><!-- End Breadcrumbs -->
+    <!-- <table>
+        <tr>
+            <th>SNO</th>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        <tr *ngFor="let lead of leads">
+            <td> {{ lead.sno }} </td>
+            <td> {{ lead.name }} </td>
+            <td> {{ lead.mobileNo }} </td>
+            <td> {{ lead.email }} </td>
+            <td> {{ lead.date }} </td>
+            <td> {{ lead.status }} </td>
+        </tr>
+    </table> -->
+    <div class="container table-bordered" style="text-align: center;">
+    <table class=" table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">SNO</th>
+          <th scope="col">Name</th>
+          <th scope="col">Mobile Number</th>
+          <th scope="col">Email</th>
+          <th scope="col">Date</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let lead of leads" class="border">
+          <td> {{ lead.sno }} </td>
+          <td> {{ lead.name }} </td>
+          <td> {{ lead.mobileNo }} </td>
+          <td> {{ lead.email }} </td>
+          <td> {{ lead.date }} </td>
+          <td> {{ lead.status }} </td>
+      </tr>
+       
+      </tbody>
+    </table>
+  </div>
+</main>

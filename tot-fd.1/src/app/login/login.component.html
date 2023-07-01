@@ -1,0 +1,53 @@
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2 class="fw-bold">Login</h2>
+            <ol>
+              <li><a href="index.html">Home</a></li>
+              <li>Login</li>
+            </ol>
+          </div>
+        </div>
+     </section><!-- End Breadcrumbs -->
+     <div class="container mt-lg-5">
+     <div class="col-lg-6 mt-2 mt-lg-2">
+    {{message}}
+    <form [formGroup]="login" (ngSubmit)="save()" *ngIf="status==false">
+        <div class="form-group form-group-lg">     
+            <label for="username">Username : </label>
+            <input type="text"  formControlName="username" id="uername" autofocus class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="username?.touched && username?.invalid" class="alert alert-danger ">Enter your username </div>
+        </div>
+        <div class="form-group mt-lg-3">         
+            <label for="password">Password : </label>
+            <input type="password" formControlName="password" id="password" class="form-control border border-dark border-2 opacity-75">
+            <div *ngIf="password?.touched && password?.invalid" class="alert alert-danger">Enter Password</div>
+        </div>
+        <div class="form-group mt-3">
+            <input type="submit" id="sumbit" class="btn btn-primary mt-lg-3">
+        </div>
+    </form>
+    <div *ngIf="forgottenPasswordStage == 0 && status == false" class="mt-lg-3">
+        <a (click)='forgottenPassword()'>Forgotten Password ?</a>
+    </div>
+    <div *ngIf="forgottenPasswordStage == 1">
+        <form [formGroup]="forgottenPasswordForm" (ngSubmit)="sendLinkOnForgottenPassword()">
+            <div class="form-group mt-lg-3">
+                <label for="emailId">Email Id</label>
+                <input type="text" formControlName="emailId" class="form-control"/>
+                <div *ngIf="emailId?.touched && emailId?.invalid" class="alert alert-danger">Enter Email Id</div>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Send Password Link to the above email id" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+    <div *ngIf="forgottenPasswordStage == 2">
+        We have sent a link to reset  the password to the above specified mail id. 
+    </div>
+</main>
+
